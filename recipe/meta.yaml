@@ -10,8 +10,8 @@ source:
   sha256: 9cd36a240b4d966ebb3334088d7433e17f82502edb0d1a0dd5900a9ba94f2a40
 
 build:
-  number: 0
-  skip: true  # [not linux]
+  number: 1
+  skip: true  # [win]
 
 requirements:
   build:
@@ -24,6 +24,7 @@ requirements:
     - cppzmq
     - cpptango
     - omniorb
+    - omniorb-libs
 
 test:
   commands:
