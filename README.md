@@ -1,11 +1,11 @@
-About tango-admin
-=================
+About tango-admin-feedstock
+===========================
+
+Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tango-admin-feedstock/blob/main/LICENSE.txt)
 
 Home: https://www.tango-controls.org
 
 Package license: GPL-3.0-or-later
-
-Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tango-admin-feedstock/blob/main/LICENSE.txt)
 
 Summary: Tango database command line interface
 
