@@ -1,5 +1,5 @@
 {% set name = "tango-admin" %}
-{% set version = "1.18" %}
+{% set version = "1.19" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://gitlab.com/tango-controls/tango_admin/-/archive/Release_{{ version }}/tango_admin-Release_{{ version }}.tar.gz
-  sha256: 2af2e2c6c9d125c51dcaf5a201b7a2224c6c59c74d741e99967cd9b88fb414e8
+  sha256: 6af2a607bda0b7694d328e013398a87bf3d7b94a1db4fbb0946144277e62445a
 
 build:
   number: 0
@@ -23,12 +23,12 @@ requirements:
   host:
     - cppzmq
     - cpptango
-    - omniorb
     - omniorb-libs
 
 test:
   commands:
-    - tango_admin --help
+    # tango_admin --help returns -EINVAL
+    - tango_admin --help 2>&1 | grep Usage
 
 about:
   home: https://www.tango-controls.org
