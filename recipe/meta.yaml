@@ -23,12 +23,12 @@ requirements:
   host:
     - cppzmq
     - cpptango
-    - omniorb
     - omniorb-libs
 
 test:
   commands:
-    - tango_admin --help
+    # tango_admin --help returns -EINVAL
+    - tango_admin --help 2>&1 | grep Usage
 
 about:
   home: https://www.tango-controls.org
