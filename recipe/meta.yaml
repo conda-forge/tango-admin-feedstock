@@ -6,8 +6,8 @@ package:
   version: {{ version }}
 
 source:
-  url: https://gitlab.com/tango-controls/tango_admin/-/archive/Release_{{ version }}/tango_admin-Release_{{ version }}.tar.gz
-  sha256: 93d05a5affe3a371b62ac6c3a330b5c14ad3756b509fd4c73ca0482e32e7e4cc
+  url: https://gitlab.com/tango-controls/tango_admin/-/releases/Release_{{ version }}/downloads/tango_admin-with-submodules-Release_{{ version }}.tar.gz
+  sha256: 9ce943d2b9c6ec448cc5baed3ab75844170c2e0d8be7d1f228e31a0b3b31b248
 
 build:
   number: 0
