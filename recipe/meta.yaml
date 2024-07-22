@@ -18,6 +18,7 @@ requirements:
     - cmake
     - make
     - {{ compiler('cxx') }}
+    - {{ stdlib("c") }}
     - libtool
     - pkg-config
   host:
