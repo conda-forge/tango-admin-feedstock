@@ -1,13 +1,13 @@
 {% set name = "tango-admin" %}
-{% set version = "1.21" %}
+{% set version = "1.18" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://gitlab.com/tango-controls/tango_admin/-/releases/Release_{{ version }}/downloads/tango_admin-with-submodules-Release_{{ version }}.tar.gz
-  sha256: 7a7efe3a0a2b4feec89a9a369de9aacb79d32f851fcf0df8247e9678c8cd93aa
+  url: https://gitlab.com/tango-controls/tango_admin/-/archive/Release_{{ version }}/tango_admin-Release_{{ version }}.tar.gz
+  sha256: 2af2e2c6c9d125c51dcaf5a201b7a2224c6c59c74d741e99967cd9b88fb414e8
 
 build:
   number: 0
