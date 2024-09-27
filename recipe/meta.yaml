@@ -10,7 +10,7 @@ source:
   sha256: aa24d6fd7703f866832065cde828620db2dff7e9103c97c0d0a1c9ea49ef0f56
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
 
 requirements:
@@ -19,7 +19,6 @@ requirements:
     - make
     - {{ compiler('cxx') }}
     - {{ stdlib("c") }}
-    - libtool
     - pkg-config
   host:
     - cppzmq
