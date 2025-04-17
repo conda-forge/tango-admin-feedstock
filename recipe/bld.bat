@@ -5,6 +5,7 @@ cd build
 
 cmake -G "NMake Makefiles" ^
       -DCMAKE_BUILD_TYPE=Release ^
+      -DBUILD_TESTING=OFF ^
       -DCMAKE_INSTALL_PREFIX:PATH="%LIBRARY_PREFIX%" ^
       -DCMAKE_PREFIX_PATH:PATH="%LIBRARY_PREFIX%" ^
       ..
