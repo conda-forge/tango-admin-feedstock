@@ -3,7 +3,7 @@ About tango-admin-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/tango-admin-feedstock/blob/main/LICENSE.txt)
 
-Home: https://www.tango-controls.org
+Home: https://www.tango-controls.org/
 
 Package license: GPL-3.0-or-later
 
@@ -14,7 +14,6 @@ Development: https://gitlab.com/tango-controls/tango_admin
 Tango-Controls is a software toolkit for building control systems.
 This utility is a Tango database command line interface.
 Obviously, not all the database features are interfaced by this tool.
-
 
 Current build status
 ====================
