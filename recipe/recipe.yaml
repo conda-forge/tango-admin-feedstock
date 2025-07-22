@@ -1,0 +1,53 @@
+schema_version: 1
+
+context:
+  name: tango-admin
+  version: 1.27
+
+package:
+  name: ${{ name|lower }}
+  version: ${{ version }}
+
+source:
+  url: https://gitlab.com/tango-controls/tango_admin/-/releases/Release_${{ version }}/downloads/tango_admin-with-submodules-Release_${{ version }}.tar.gz
+  sha256: c3d402e3ff9eec9ac81ef15ad79583f4d81356cdac4ff2349f8bb12355db6c2f
+
+build:
+  number: 1
+
+requirements:
+  build:
+    - cmake
+    - if: unix
+      then: make
+    - ${{ compiler('cxx') }}
+    - ${{ stdlib("c") }}
+    - if: unix
+      then: pkg-config
+  host:
+    - cppzmq
+    - cpptango
+    - omniorb-libs
+
+tests:
+  - script:
+      - if: unix
+        then: tango_admin --help 2>&1 | grep Usage
+      - if: win
+        then: tango_admin --help 2>&1 | findstr Usage
+
+about:
+  license: GPL-3.0-or-later
+  license_file: LICENSE
+  summary: Tango database command line interface
+  description: |
+    Tango-Controls is a software toolkit for building control systems.
+    This utility is a Tango database command line interface.
+    Obviously, not all the database features are interfaced by this tool.
+  homepage: https://www.tango-controls.org
+  repository: https://gitlab.com/tango-controls/tango_admin
+
+extra:
+  recipe-maintainers:
+    - beenje
+    - bourtemb
