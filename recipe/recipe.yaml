@@ -2,7 +2,7 @@ schema_version: 1
 
 context:
   name: tango-admin
-  version: 1.27
+  version: "1.28"
 
 package:
   name: ${{ name|lower }}
@@ -10,10 +10,10 @@ package:
 
 source:
   url: https://gitlab.com/tango-controls/tango_admin/-/releases/Release_${{ version }}/downloads/tango_admin-with-submodules-Release_${{ version }}.tar.gz
-  sha256: c3d402e3ff9eec9ac81ef15ad79583f4d81356cdac4ff2349f8bb12355db6c2f
+  sha256: 02159745d2a7c738483630788a36ebf92a311f29ce06c6202201813fc09224e1
 
 build:
-  number: 2
+  number: 0
 
 requirements:
   build:
