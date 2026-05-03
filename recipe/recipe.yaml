@@ -1,11 +1,10 @@
 schema_version: 1
 
 context:
-  name: tango-admin
   version: "1.28"
 
-package:
-  name: ${{ name|lower }}
+recipe:
+  name: tango-admin-split
   version: ${{ version }}
 
 source:
@@ -13,25 +12,63 @@ source:
   sha256: 02159745d2a7c738483630788a36ebf92a311f29ce06c6202201813fc09224e1
 
 build:
-  number: 1
+  number: 2
 
-requirements:
-  build:
-    - cmake
-    - ${{ compiler('cxx') }}
-    - ${{ stdlib("c") }}
-    - if: unix
-      then:
-        - make
-        - pkg-config
-  host:
-    - cppzmq
-    - cpptango
-    - omniorb-libs
+outputs:
+  - staging:
+      name: tango-admin-build
+    requirements:
+      build:
+        - cmake
+        - ninja
+        - if: unix
+          then:
+            - pkg-config
+        - ${{ stdlib('c') }}
+        - ${{ compiler('cxx') }}
+      host:
+        - cppzmq
+        - cpptango
+        - omniorb-libs
+    build:
+      script:
+        file: build
 
-tests:
-  - script:
-      - tango_admin --help
+  - package:
+      name: tango-admin
+    inherit: tango-admin-build
+    build:
+      files:
+        - if: unix
+          then:
+            - bin/tango_admin
+          else:
+            - Library/bin/tango_admin.exe
+    tests:
+      - script:
+          - tango_admin --help
+
+  - package:
+      name: tango-admin-dbg
+    inherit:
+      from: tango-admin-build
+      run_exports: false
+    build:
+      skip:
+        - not linux
+      dynamic_linking:
+        # Prevent dbg file to be modified
+        # Will raise CRC mismatch otherwise!
+        binary_relocation: false
+      files:
+        - lib/debug/tango_admin.dbg
+    requirements:
+      run:
+        - ${{ pin_subpackage('tango-admin', exact=True) }}
+    tests:
+      - package_contents:
+          files:
+            - lib/debug/tango_admin.dbg
 
 about:
   license: GPL-3.0-or-later
@@ -45,6 +82,7 @@ about:
   repository: https://gitlab.com/tango-controls/tango_admin
 
 extra:
+  feedstock-name: tango-admin
   recipe-maintainers:
     - beenje
     - bourtemb
